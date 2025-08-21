@@ -80,6 +80,24 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.2);
     }
 
+    /* Atur transisi mulus di ikon */
+  .social-icon i {
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+  }
+
+  /* Efek hover */
+  .social-icon:hover i {
+    transform: scale(1.3) rotate(8deg);
+    color: #0d6efd; /* biru saat hover */
+  }
+
+  /* Efek klik (active) */
+  .social-icon:active i {
+    transform: scale(0.9) rotate(-5deg);
+    color: #198754; /* hijau saat ditekan */
+  }
+
     /* Scroll animation */
     section {
       opacity: 0; transform: translateY(40px);
@@ -470,8 +488,6 @@
   </div>
 </section>
 
-
-<!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 
