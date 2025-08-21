@@ -14,31 +14,27 @@
       background-color: #da87b6;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding-top: 120px; /* jarak untuk navbar */
+      padding-top: 120px; /* jarak navbar */
     }
 
-    * {
-      transition: all 0.3s ease-in-out;
-    }
+    * { transition: all 0.3s ease-in-out; }
 
     /* Navbar */
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
+      height: 120px;              
       z-index: 1030;
       background-color: #e776b6 !important;
     }
 
-    /* Sidebar */
+    /* Sidebar (desktop only) */
     .sidebar {
       background-color: #e776b6;
-      width: 230px;
+      width: 220px;
       height: calc(100vh - 120px);
       position: fixed;
-      top: 120px;
-      left: 0;
+      top: 120px; left: 0;
       padding-top: 1px;
       overflow-y: auto;
     }
@@ -49,56 +45,34 @@
     }
     .sidebar .nav-link::after {
       content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
+      position: absolute; left: 0; bottom: 0;
+      width: 0%; height: 2px;
       background: white;
       transition: width 0.3s ease-in-out;
     }
-    .sidebar .nav-link:hover::after {
-      width: 100%;
-    }
+    .sidebar .nav-link:hover::after { width: 100%; }
 
-    .content {
-      padding: 20px;
-      margin-left: 230px; /* default untuk desktop */
-    }
+    .content { padding: 20px; margin-left: 230px; }
 
     /* Hero */
     .hero {
       min-height: 60vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       text-align: center;
       animation: fadeInUp 1s ease-in-out;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #ede6ea;
-    }
-    .hero span {
-      color: #f9eff5;
-    }
+    .hero h1 { font-size: 2.5rem; font-weight: bold; color: #ede6ea; }
+    .hero span { color: #f9eff5; }
 
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Card hover */
-    .card:hover {
-      transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-    }
-
-    /* Button hover */
+    /* Hover */
+    .card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
     .btn-primary {
-      background: #e776b6;
-      border: none;
+      background: #e776b6; border: none;
     }
     .btn-primary:hover {
       background: #d45aa0;
@@ -108,14 +82,29 @@
 
     /* Scroll animation */
     section {
-      opacity: 0;
-      transform: translateY(40px);
+      opacity: 0; transform: translateY(40px);
       transition: all 0.8s ease-in-out;
     }
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
+    section.show { opacity: 1; transform: translateY(0); }
+
+    /* Social icon */
+    .social-icon { color: black; transition: color 0.3s ease; }
+    .social-icon:hover { color: #007bff; }
+    .social-icon:active { color: #0056b3; }
+
+    /* Skills badge */
+    .skill-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.95rem;
+      padding: 10px 18px; border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out; cursor: default;
     }
+    .skill-badge i { font-size: 1.1rem; color: #e776b6; }
+    .skill-badge:hover { transform: translateY(-3px) scale(1.05); background: #e776b6; color: white; }
+
+    .animate-name { display: inline-block; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
     /* RESPONSIVE */
     @media (max-width: 992px) {
@@ -124,24 +113,21 @@
         width: 100%;
         height: auto;
         top: 0;
+        display: flex;
+        justify-content: center;
       }
-      .content {
-        margin-left: 0;
-        padding-top: 20px;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
+      .sidebar ul { flex-direction: row !important; flex-wrap: wrap; justify-content: center; }
+      .sidebar .nav-item { margin: 5px; }
+      .content { margin-left: 0; padding-top: 20px; }
+      .hero h1 { font-size: 2rem; }
     }
 
     @media (max-width: 576px) {
-      .hero h1 {
-        font-size: 1.6rem;
-      }
-      .btn-primary {
-        padding: 8px 16px;
-        font-size: 14px;
-      }
+      .hero h1 { font-size: 1.6rem; }
+      .btn-primary { padding: 8px 16px; font-size: 14px; }
+      .navbar { height: 90px; }
+      body { padding-top: 90px; }
+      .logo-img { max-height: 60px !important; }
     }
   </style>
 </head>
@@ -154,14 +140,14 @@
       <img src="gambar/adr.png" alt="Logo" class="logo-img rounded-circle" style="max-height: 80px;" />
     </a>
     <div class="text-white fw-bold fs-4 text-center flex-grow-1">
-      <a href="index.html" style="color: white; text-decoration: none;">MY PORTFOLIO</a>
+      <a href="index.html" style="color: white; text-decoration: none; font-size: 30px; font-weight: bold;">MY PORTFOLIO</a>
     </div>
   </div>
 </nav>
 
 <!-- Sidebar -->
-<div class="sidebar d-lg-block d-none p-3">
-  <ul class="nav flex-column">
+<div class="sidebar d-lg-block p-3">
+  <ul class="nav flex-column flex-lg-column">
     <li class="nav-item mb-2"><a class="nav-link" href="#about"><i class="bi bi-person me-2"></i>About Me</a></li>
     <li class="nav-item mb-2"><a class="nav-link" href="#skills"><i class="bi bi-lightning me-2"></i>Skills</a></li>
     <li class="nav-item mb-2"><a class="nav-link" href="#projects"><i class="bi bi-folder me-2"></i>Projects</a></li>
@@ -176,24 +162,20 @@
   <!-- Hero -->
   <section class="hero text-white">
     <div>
-      <h1><span>Alfi Syah Dewi Risgi</span></h1>
+      <h1><span class="animate-name">Alfi Syah Dewi Risgi</span></h1>
       <p class="lead fw-bold"><span id="typed"></span></p>
       <a href="#about" class="btn btn-primary mt-3">Explore More</a>
     </div>
   </section>
 
-<!-- Tambahkan JS -->
+<!-- Typed.js -->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
   var typed = new Typed("#typed", {
-    strings: ["I'm Software Engineer", "I'm Web Developer", "I'm RPL Student"],
-    typeSpeed: 80,
-    backSpeed: 40,
-    backDelay: 2000,
-    loop: true
+    strings: ["Saya Siswi Rekayasa Perangkat Lunak", "Saya seorang Web Developer"],
+    typeSpeed: 80, backSpeed: 40, backDelay: 2000, loop: true
   });
 </script>
-
 
 <!-- About Section -->
 <section id="about" class="py-5 text-white">
@@ -214,23 +196,23 @@
       <div class="col-md-8">
         <h3 class="fw-bold mb-3">Hello, saya Alfi Syah Dewi Risgi</h3>
         <p>
-          I’m a <span class="fw-semibold">Software Engineering student at SMKN 2 Bekasi</span> 
-          with a strong passion for technology and problem-solving. 
-          I have a great interest in web development and IT systems, and I always strive 
-          to expand my knowledge by applying it to real-world projects.
+          Saya <span class="fw-semibold">Siswa Rekayasa Perangkat Lunak SMKN 2 Kota Bekasi</span> 
+          dengan keinginan yang kuat terhadap teknologi dan pemecahan masalah.
+          Saya memiliki minat yang besar dalam pengembangan web dan sistem TI, dan saya selalu berusaha
+          untuk memperluas pengetahuan saya dengan menerapkannya pada proyek-proyek dunia nyata.
         </p>
         <p>
-          During my <span class="fw-semibold">2.5-month internship at PT. Elsewedy Electric Indonesia</span>, 
-          I gained valuable experience in both the <span class="fw-semibold">Warehouse</span> and 
-          <span class="fw-semibold">IT divisions</span>. My responsibilities included document filing, 
-          renaming and scanning documents, as well as contributing to web-based projects such as improving 
-          the asset borrowing system and developing a visitor management website for the security team. 
-          This experience enhanced my technical expertise while strengthening my adaptability, teamwork, 
-          and attention to detail.
+          Selama saya <span class="fw-semibold">PRAKERIN 2,5 bulan di PT. Elsewedy Electric Indonesia</span>, 
+          Saya memperoleh pengalaman berharga di kedua bidang <span class="fw-semibold">Warehouse</span> dan 
+          <span class="fw-semibold">Divisi IT</span>. Kegiatan saya meliputi pengarsipan dokumen,
+          mengganti nama dan memindai dokumen, serta berkontribusi pada proyek berbasis web seperti meningkatkan
+          sistem peminjaman aset dan mengembangkan situs web manajemen pengunjung untuk tim keamanan.
+          Pengalaman ini meningkatkan keahlian teknis saya sekaligus memperkuat kemampuan beradaptasi, kerja sama tim,
+          dan ketelitian saya.
         </p>
         <p>
-          I am committed to continuous professional growth, focusing on building efficient and scalable solutions 
-          while sharpening my skills in both software development and IT support.
+          Saya berkomitmen pada pertumbuhan profesional yang berkelanjutan, dengan fokus membangun solusi yang efisien dan terukur
+          sambil mengasah keterampilan saya dalam pengembangan perangkat lunak dan dukungan IT.
         </p>
       </div>
     </div>
@@ -239,30 +221,30 @@
 
 
 <!-- Skills -->
-<section id="skills" class="py-5 text-white d-flex align-items-center" style="min-height:100vh;">
+<section id="skills" class="py-5 text-white d-flex align-items-center">
   <div class="container text-center" style="max-width:900px;">
     <h2 class="fw-bold text-center mb-4">Skills</h2>
-    <hr class="mx-auto mb-5" style="width: 120px; height:3px; background:#f6f1f1; opacity:0.8;">
+    <hr class="mx-auto mb-5" style="width: 120px; height:3px; opacity:0.8;">
 
     <div class="row">
       <!-- Programming Languages -->
       <div class="col-md-6 mb-4 text-start">
-        <h5 class="fw-bold">Programming Language</h5>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <span class="badge bg-white text-black px-3 py-2">C++</span>
-          <span class="badge bg-white text-black px-3 py-2">Java</span>
-          <span class="badge bg-white text-black px-3 py-2">HTML</span>
-          <span class="badge bg-white text-black px-3 py-2">PHP</span>
+        <h5 class="fw-bold mb-3">Bahasa Pemrograman</h5>
+        <div class="d-flex flex-wrap gap-3 mt-2">
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-code-slash"></i> C++</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-cup-hot"></i> Java</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-filetype-html"></i> HTML</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-filetype-php"></i> PHP</span>
         </div>
       </div>
 
       <!-- Frameworks & Libraries -->
       <div class="col-md-6 mb-4 text-start">
-        <h5 class="fw-bold">Frameworks & Libraries</h5>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <span class="badge bg-white text-black px-3 py-2">Bootstrap</span>
-          <span class="badge bg-white text-black px-3 py-2">JavaScript</span>
-          <span class="badge bg-white text-black px-3 py-2">CSS</span>
+        <h5 class="fw-bold mb-3">Frameworks & Libraries</h5>
+        <div class="d-flex flex-wrap gap-3 mt-2">
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-bootstrap-fill"></i> Bootstrap</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-filetype-js"></i> JavaScript</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-filetype-css"></i> CSS</span>
         </div>
       </div>
     </div>
@@ -270,21 +252,21 @@
     <div class="row">
       <!-- Tools -->
       <div class="col-md-6 mb-4 text-start">
-        <h5 class="fw-bold">Tools</h5>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <span class="badge bg-white text-black px-3 py-2">VS Code</span>
-          <span class="badge bg-white text-black px-3 py-2">Netbeans</span>
-          <span class="badge bg-white text-black px-3 py-2">Word</span>
-          <span class="badge bg-white text-black px-3 py-2">Excel</span>
+        <h5 class="fw-bold mb-3">Tools</h5>
+        <div class="d-flex flex-wrap gap-3 mt-2">
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-terminal"></i> VS Code</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-code"></i> Netbeans</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-file-word"></i> Word</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-file-excel"></i> Excel</span>
         </div>
       </div>
 
       <!-- Database -->
       <div class="col-md-6 mb-4 text-start">
-        <h5 class="fw-bold">Database</h5>
-        <div class="d-flex flex-wrap gap-2 mt-2">
-          <span class="badge bg-white text-black px-3 py-2">MySQL</span>
-          <span class="badge bg-white text-black px-3 py-2">PhpMyAdmin</span>
+        <h5 class="fw-bold mb-3">Database</h5>
+        <div class="d-flex flex-wrap gap-3 mt-2">
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-database"></i> MySQL</span>
+          <span class="skill-badge bg-light text-dark"><i class="bi bi-server"></i> PhpMyAdmin</span>
         </div>
       </div>
     </div>
@@ -297,16 +279,14 @@
     <hr class="mx-auto mb-5" style="width: 120px; height:3px; background:#f6f1f1; opacity:0.8;">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <div class="service-box p-4 text-center shadow rounded bg-light text-black">
+        <div class="card shadow service-box p-4 text-center rounded bg-light text-black">
           <div class="icon mb-3">
             <i class="fas fa-code fa-3x text-info"></i>
           </div>
           <h5 class="fw-bold">Web Development</h5>
           <p>
-            I specialize in building responsive and user-friendly web applications 
-            using PHP, HTML, CSS, and Bootstrap. In this project, I developed a 
-            dashboard for managing IoT-based attendance and payment systems, 
-            including features for monitoring, reporting, and real-time updates.
+           Saya ahli dalam membangun aplikasi web yang responsif dan ramah pengguna
+           menggunakan PHP, HTML, CSS, dan Bootstrap. Dalam proses pengembangan web penerimaan tamu, saya membuat sistem yang mempermudah pencatatan dan pengelolaan data pengunjung
           </p>
         </div>
       </div>
@@ -331,9 +311,9 @@
           <div class="card-body bg-white text-black">
             <h5 class="fw-bold">Project 1</h5>
             <p class="mb-0">
-              This project is about developing a document management and archiving system. 
-              The system is designed to simplify the process of recording, storing, and retrieving documents 
-              so that they can be managed in a more efficient and organized manner.
+              Project ini membahas pengembangan sistem manajemen dan pengarsipan dokumen.
+              Sistem ini dirancang untuk menyederhanakan proses pencatatan, penyimpanan, dan pengambilan dokumen
+              sehingga dapat dikelola secara lebih efisien dan terorganisir.
             </p>
           </div>
         </div>
@@ -346,9 +326,7 @@
           <div class="card-body bg-white text-black">
             <h5 class="fw-bold">Project 2</h5>
             <p class="mb-0">
-              This project is focused on creating an application that automates the renaming of documents 
-              according to a predefined format. The system helps ensure consistency and standardization of 
-              administrative files, making them easier to manage and search.
+             Project ini berfokus pada proses penggantian nama dokumen secara manual sesuai format yang telah ditentukan. Prosedur ini bertujuan untuk menjaga konsistensi dan standarisasi dalam penamaan berkas administratif, sehingga dokumen lebih mudah dikelola, dicari, dan dipindahkan ke penyimpanan jaringan warehouse.
             </p>
           </div>
         </div>
@@ -357,14 +335,14 @@
       <!-- Project 3 -->
       <div class="col-md-4">
         <div class="card shadow h-100">
-          <img src="gambar/project3.jpg" class="card-img-top" alt="Website Penerimaan Tamu">
+          <img src="gambar/project3.jpg" class="card-img-top" alt="Buat Website Penerimaan Tamu">
           <div class="card-body bg-white text-black">
             <h5 class="fw-bold">Project 3</h5>
             <p class="mb-0">
-              This project involves building a PHP-based website for guest registration. 
-              The system records visitor data, stores visit history, supports webcam integration, 
-              and provides guest slip printing. It is designed with a modern user interface 
-              and an integrated database for efficient guest management.
+              Project ini melibatkan pembangunan situs web berbasis PHP untuk pendaftaran tamu.
+              Sistem ini mencatat data pengunjung, menyimpan riwayat kunjungan, mendukung integrasi webcam,
+              dan menyediakan pencetakan slip tamu. Sistem ini dirancang dengan antarmuka pengguna modern
+              dan basis data terintegrasi untuk manajemen tamu yang efisien.
             </p>
           </div>
         </div>
@@ -388,7 +366,7 @@
           <div class="card-body bg-light text-black rounded-bottom">
             <h5 class="fw-bold">IBM SkillsBuild</h5>
             <p class="small text-black-50 mb-0">
-              Training certificate from IBM SkillsBuild through the Digitalent Kominfo program.
+              Sertifikat pelatihan dari IBM SkillsBuild melalui program Digitalent Kominfo.
             </p>
           </div>
         </div>
@@ -399,9 +377,9 @@
         <div class="card shadow border-0 h-100">
           <img src="gambar/sertif2.jpg" class="card-img-top" alt="Certificate 2">
           <div class="card-body bg-light text-black rounded-bottom">
-            <h5 class="fw-bold">Internship (PRAKERIN)</h5>
+            <h5 class="fw-bold">PRAKERIN</h5>
             <p class="small text-black-50 mb-0">
-              Internship certificate as proof of hands-on industry work experience.
+              Sertifikat ini sebagai bukti pengalaman kerja langsung di dunia industri.
             </p>
           </div>
         </div>
@@ -419,24 +397,24 @@
     <div class="row g-4">
       <!-- Testimonial 1: Pembimbing Prakerin -->
       <div class="col-md-6">
-        <div class="p-4 bg-white shadow rounded h-100">
+        <div class="card shadow p-4 bg-white rounded h-100">
           <p class="mb-3">
-            "As an intern, Alfi showed great responsibility and creativity. 
-            He successfully contributed to developing practical solutions 
-            that really supported our company processes."
+            "Sebagai peserta PRAKERIN, Alfi menunjukkan tanggung jawab dan kreativitas yang luar biasa.
+            Ia berhasil berkontribusi dalam mengembangkan web
+            yang sangat mendukung proses perusahaan kami.
           </p>
-          <h6 class="fw-bold mt-3">– Internship Supervisor, PT. Elsewedy Electric Indonesia</h6>
+          <h6 class="fw-bold mt-3">– Pembimbing PRAKERIN, PT. Elsewedy Electric Indonesia</h6>
         </div>
       </div>
 
       <!-- Testimonial 2: Satpam (Security) -->
       <div class="col-md-6">
-        <div class="p-4 bg-white shadow rounded h-100">
+        <div class="card shadow p-4 bg-white rounded h-100">
           <p class="mb-3">
-            "The visitor registration website created by Alfi makes our job much easier. 
-            It saves time, keeps records organized, and is simple for us to use every day."
+            "Situs web penerimaan tamu yang dibuat oleh Alfi sangat memudahkan pekerjaan kami.
+            Menghemat waktu, menjaga catatan tetap teratur, dan mudah digunakan setiap hari."
           </p>
-          <h6 class="fw-bold mt-3">– Security Staff, Visitor Registration System User</h6>
+          <h6 class="fw-bold mt-3">– Staf Security, Pengguna Sistem Visitor Registration</h6>
         </div>
       </div>
     </div>
@@ -451,21 +429,40 @@
 
     <div class="row justify-content-center">
       <!-- Social Media Box -->
-      <div class="col-md-6">
-        <div class="p-4 bg-light text-black rounded shadow h-100 text-center">
-          <div class="d-flex justify-content-center gap-3 mt-2">
-            <a href="https://wa.me/6282114020902" target="_blank" class="text-black fs-4">
-              <i class="bi bi-whatsapp"></i>
-            </a>
-            <a href="https://www.instagram.com/afiisyhh_/" target="_blank" class="text-black fs-4">
-              <i class="bi bi-instagram"></i>
-            </a>
-            <a href="https://github.com/AlsyDewiGirl" target="_blank" class="text-black fs-4">
-              <i class="bi bi-github"></i>
-            </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alfisyahdr21a@gmail.com" target="_blank" class="text-black fs-4">
-              <i class="bi bi-envelope"></i>
-            </a>
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow p-4 bg-light text-black rounded h-100 text-center">
+          <div class="d-flex justify-content-around flex-wrap mt-2">
+            <!-- WhatsApp -->
+            <div class="mb-3">
+              <a href="https://wa.me/6282114020902" target="_blank" class="social-icon fs-4">
+                <i class="bi bi-whatsapp"></i>
+              </a>
+              <div class="small mt-1">WhatsApp</div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="mb-3">
+              <a href="https://www.instagram.com/afiisyhh_/" target="_blank" class="social-icon fs-4">
+                <i class="bi bi-instagram"></i>
+              </a>
+              <div class="small mt-1">Instagram</div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <a href="mailto:alfisyahdr21a@gmail.com" target="_blank" class="social-icon fs-4">
+                <i class="bi bi-envelope"></i>
+              </a>
+              <div class="small mt-1">Email</div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="mb-3">
+              <a href="https://github.com/AlsyDewiGirl" target="_blank" class="social-icon fs-4">
+                <i class="bi bi-github"></i>
+              </a>
+              <div class="small mt-1">GitHub</div>
+            </div>
           </div>
         </div>
       </div>
@@ -485,16 +482,13 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
   const sections = document.querySelectorAll("section");
   const revealOnScroll = () => {
     let triggerBottom = window.innerHeight * 0.85;
     sections.forEach(sec => {
       const boxTop = sec.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        sec.classList.add("show");
-      }
+      if (boxTop < triggerBottom) sec.classList.add("show");
     });
   };
   window.addEventListener("scroll", revealOnScroll);
