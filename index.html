@@ -52,9 +52,10 @@
       transition: width 0.3s ease-in-out;
     }
 
-    .overlay-menu {
+/* Overlay menu */
+.overlay-menu {
   position: fixed;
-  top: 120px; /* nempel pas di bawah navbar */
+  top: 90px;   /* pas mobile, tingginya sama dengan navbar */
   left: 0;
   right: 0;
   background: #e776b6;
@@ -66,13 +67,16 @@
 
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   border-radius: 0 0 12px 12px;
+
+  margin: 0;   /* pastikan gak ada jarak tambahan */
 }
 
-/* Overlay menu untuk HP */
-@media (max-width: 576px) 
+
+@media (min-width: 577px) {
   .overlay-menu {
-    top: 90px; /* samakan dengan tinggi navbar mobile */
+    top: 120px;
   }
+}
 
 .overlay-menu a {
   position: relative; /* biar ::after nempel ke teks */
