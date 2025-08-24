@@ -54,7 +54,7 @@
 
     .overlay-menu {
   position: fixed;
-  top: 100px; /* nempel pas di bawah navbar */
+  top: 120px; /* nempel pas di bawah navbar */
   left: 0;
   right: 0;
   background: #e776b6;
@@ -67,6 +67,12 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   border-radius: 0 0 12px 12px;
 }
+
+/* Overlay menu untuk HP */
+@media (max-width: 576px) 
+  .overlay-menu {
+    top: 90px; /* samakan dengan tinggi navbar mobile */
+  }
 
 .overlay-menu a {
   position: relative; /* biar ::after nempel ke teks */
